@@ -15,7 +15,6 @@ app.use('/api/products', productRoutes)
 
 // middleware to show error on postman in development mode
 app.use(notFound)
-
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
