@@ -3,6 +3,9 @@ import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGOUT,
+  USER_REGISTER_REQUSET,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from '../constants/userConstants'
 
 const userLoginReducer = (state = {}, action) => {
@@ -21,5 +24,18 @@ const userLoginReducer = (state = {}, action) => {
 
   return state
 }
+const userRegisterReducer = (state = {}, action) => {
+  if (action.type === USER_REGISTER_REQUSET) {
+    return { loading: true }
+  }
+  if (action.type === USER_REGISTER_SUCCESS) {
+    return { loading: false, userInfo: action.payload }
+  }
+  if (action.type === USER_REGISTER_FAIL) {
+    return { loading: false, error: action.payload }
+  }
 
-export { userLoginReducer }
+  return state
+}
+
+export { userLoginReducer, userRegisterReducer }
