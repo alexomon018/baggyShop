@@ -29,7 +29,7 @@ function Header() {
               </LinkContainer>
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='/profle'>
+                  <LinkContainer to='/profile'>
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logutHandler}>
