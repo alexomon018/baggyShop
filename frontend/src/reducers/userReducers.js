@@ -1,15 +1,15 @@
 import {
-  USER_LOGIN_REQUSET,
-  USER_LOGIN_SUCCESS,
   USER_LOGIN_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
   USER_LOGOUT,
-  USER_REGISTER_REQUSET,
-  USER_REGISTER_SUCCESS,
   USER_REGISTER_FAIL,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
 } from '../constants/userConstants'
 
 const userLoginReducer = (state = {}, action) => {
-  if (action.type === USER_LOGIN_REQUSET) {
+  if (action.type === USER_LOGIN_REQUEST) {
     return { loading: true }
   }
   if (action.type === USER_LOGIN_SUCCESS) {
@@ -24,18 +24,19 @@ const userLoginReducer = (state = {}, action) => {
 
   return state
 }
+
 const userRegisterReducer = (state = {}, action) => {
-  if (action.type === USER_REGISTER_REQUSET) {
-    return { loading: true }
+  switch (action.type) {
+    case USER_REGISTER_REQUEST:
+      return { loading: true }
+    case USER_REGISTER_SUCCESS:
+      return { loading: false, userInfo: action.payload }
+    case USER_REGISTER_FAIL:
+      return { loading: false, error: action.payload }
+    case USER_LOGOUT:
+      return {}
+    default:
+      return state
   }
-  if (action.type === USER_REGISTER_SUCCESS) {
-    return { loading: false, userInfo: action.payload }
-  }
-  if (action.type === USER_REGISTER_FAIL) {
-    return { loading: false, error: action.payload }
-  }
-
-  return state
 }
-
 export { userLoginReducer, userRegisterReducer }
