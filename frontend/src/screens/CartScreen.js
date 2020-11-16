@@ -8,7 +8,6 @@ import { addToCart, removeFromCart } from '../actions/cartAction'
 function CartScreen({ match, location, history }) {
   const productID = match.params.id
   const qty = location.serach ? Number(location.serach.split('=')[1]) : 1
-
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
