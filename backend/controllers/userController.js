@@ -52,8 +52,8 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('Invalid user data')
   }
 })
-//@desc Auth user profile
-//@route POST //api/users/profile
+//@desc Get user profile
+//@route GET //api/users/profile
 //@access Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
@@ -96,5 +96,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new Error('User not found!')
   }
 })
-
-export { authUser, getUserProfile, registerUser, updateUserProfile }
+//@desc Get all users
+//@route GET //api/users
+//@access Private/Admin
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find({})
+  res.json(users)
+})
+export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers }
