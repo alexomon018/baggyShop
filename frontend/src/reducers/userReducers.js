@@ -20,6 +20,10 @@ import {
   USER_DELETE_REQUEST,
   USER_DELETE_SUCCESS,
   USER_DELETE_FAIL,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_FAIL,
+  USER_UPDATE_RESET,
 } from '../constants/userConstants'
 
 const userLoginReducer = (state = {}, action) => {
@@ -115,6 +119,23 @@ const userDeleteReducer = (state = {}, action) => {
 
   return state
 }
+const userUpdateReducer = (state = { user: {} }, action) => {
+  if (action.type === USER_UPDATE_REQUEST) {
+    return { loading: true }
+  }
+  if (action.type === USER_UPDATE_SUCCESS) {
+    return { loading: false, success: true }
+  }
+  if (action.type === USER_UPDATE_FAIL) {
+    return { loading: false, error: action.payload }
+  }
+  if (action.type === USER_UPDATE_RESET) {
+    return {
+      user: {},
+    }
+  }
+  return state
+}
 export {
   userLoginReducer,
   userRegisterReducer,
@@ -122,4 +143,5 @@ export {
   userUpdateProfileReducer,
   userListReducer,
   userDeleteReducer,
+  userUpdateReducer,
 }
