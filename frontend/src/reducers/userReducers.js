@@ -16,6 +16,7 @@ import {
   USER_UPDATE_PROFILE_FAIL,
   USER_UPDATE_PROFILE_REQUEST,
   USER_UPDATE_PROFILE_SUCCESS,
+  USER_LIST_RESET,
 } from '../constants/userConstants'
 
 const userLoginReducer = (state = {}, action) => {
@@ -89,6 +90,11 @@ const userListReducer = (state = { users: [] }, action) => {
   }
   if (action.type === USER_LIST_FAIL) {
     return { loading: false, error: action.payload }
+  }
+  if (action.type === USER_LIST_RESET) {
+    return {
+      users: [],
+    }
   }
 
   return state
