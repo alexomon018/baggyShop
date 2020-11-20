@@ -13,6 +13,7 @@ import {
   orderDetailsReducer,
   orderPayReducer,
   orderListMyReducer,
+  orderListReducer,
 } from './reducers/orderReducers'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import {
@@ -41,6 +42,7 @@ const reducer = combineReducers({
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
+  orderList: orderListReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
 })
