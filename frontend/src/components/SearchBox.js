@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
 
-function SearchBox({ history }) {
+const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState('')
 
   const submitHandler = (e) => {
-    e.preventDeafult()
+    e.preventDefault()
     if (keyword.trim()) {
-      history.push(`/serach/${keyword}`)
+      history.push(`/search/${keyword}`)
     } else {
       history.push('/')
     }
@@ -19,11 +19,11 @@ function SearchBox({ history }) {
         type='text'
         name='q'
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder='Serach Products...'
+        placeholder='Search Products...'
         className='mr-sm-2 ml-sm-5'
       ></Form.Control>
       <Button type='submit' variant='outline-success' className='p-2'>
-        Serach
+        Search
       </Button>
     </Form>
   )

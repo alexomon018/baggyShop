@@ -27,7 +27,12 @@ export const productListReducers = (state = { products: [] }, action) => {
     return { loading: true, products: [] }
   }
   if (action.type === PRODUCT_LIST_SUCCESS) {
-    return { loading: false, products: action.payload }
+    return {
+      loading: false,
+      products: action.payload.products,
+      pages: action.payload.pages,
+      page: action.payload.page,
+    }
   }
   if (action.type === PRODUCT_LIST_FAIL) {
     return { loading: false, error: action.payload }
